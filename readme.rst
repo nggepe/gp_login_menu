@@ -10,6 +10,8 @@ Fitur
 
 1. Login
 2. Logout
+3. Pencarian menu
+4. Menu dinamis dengan koneksi database
 
 *******************
 Server Requirements
@@ -17,18 +19,24 @@ Server Requirements
 PHP versi 5.6 atau terbaru lebih baik.
 
 ************
-Installation
+Instalasi
 ************
-
-Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
-of the CodeIgniter User Guide.
+1. Download code ini
+2. Exctract di localhost anda.
+3. Import database dengan nama "your_project_db" (file "your_project_db.sql" ada di folder utama).
+4. Instalasi selesai. (username: admin, password: admin).
 
 *******
 License
 *******
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
+Open source dan boleh digunakan untuk keperluan apapun.
+
+*******
+Framework
+*******
+
+Codeigniter 3.1.11
 
 *********
 Resources
