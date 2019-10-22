@@ -26,17 +26,38 @@ Instalasi
 3. Import database dengan nama "your_project_db" (file "your_project_db.sql" ada di folder utama).
 4. Instalasi selesai. (username: admin, password: admin).
 
+************
+Dokumentasi
+************
+
+-  `Pembuatan Controller Baru`_
+Pembuatan controller seperti pembuatan controller codeigniter biasa. Untuk controller yang ingin diisi bedasarkan login session, hapus code *extend CI_Controller* dan ubah menjadi *extend User_auth*.
+
+-  `Pembuatan Modul baru`_
+1. Buat data pada tabel modul
+2. Jika modul tersebut memiliki banyak fitur, kosongkan kolom *url*. Jika modul tidak memiliki menu lain maka anda bisa mengisi *url*
+
+-  `Pembuatan Menu baru`_
+1. Buat data pada tabel menu
+2. Menu wajib memiliki id_modul
+
+-  `Url pada menu atau modul`_
+Url ini merujuk ke controller, jika anda memiliki controller yang berada didalam folder maka: nama_folder/nama_controler.
+
+
 *******
 License
 *******
 
-Open source dan boleh digunakan untuk keperluan apapun.
+Open source dan boleh digunakan untuk keperluan pribadi maupun bisnis.
 
 *******
 Framework
 *******
 
-Codeigniter 3.1.11
+1. PHP: Codeigniter 3.1.11
+2. js : jquery-3.3.1
+3. css: Bootstrap
 
 *********
 Resources
