@@ -12,5 +12,11 @@ class Error404 extends CI_Controller
 		
 		$this->load->view('errors/html/error_404');
 	}
+
+	public function error_401()
+	{
+		$this->output->set_status_header('401');
+		$this->load->view("errors/forbidden_access");
+	}
 }
 ?>

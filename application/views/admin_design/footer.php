@@ -43,27 +43,33 @@
 		
 	}
 
-	$("#search_key").keyup(function(){
-		$.ajax({
-			url : "<?= base_url() ?>dashboard/Home/search",
-			type: "POST",
-			data: {"key": $("#search_key").val()},
-			dataType: "JSON",
-			success: function(data)
-			{
-				var string = "";
-				for (i = 0; i < data.length; i++) {
-					string = string+'<div class="search-item">'+
-						'<a href="<?= base_url() ?>'+data[i].url+'"><i class="'+data[i].icon+'"></i> &nbsp; '+data[i].nama+'</a>'+
-					'</div>';
+	$("#search_key").keyup(function(event){
+		if (event.keyCode === 40) {
+			$("#search-item-0").focus();
+			// $("#search_key").blur();
+		}
+		else {
+			$.ajax({
+				url : "<?= base_url() ?>Search/search",
+				type: "POST",
+				data: {"key": $("#search_key").val()},
+				dataType: "JSON",
+				success: function(data)
+				{
+					var string = "";
+					for (i = 0; i < data.length; i++) {
+						string = string+'<div class="search-item">'+
+							'<a id="search-item-'+i+'" href="<?= base_url() ?>'+data[i].url+'"><i class="'+data[i].icon+'"></i> &nbsp; '+data[i].nama+'</a>'+
+						'</div>';
+					}
+					$("#item_pencarian").html(string);
+				},
+				error: function (jqXHR, textStatus, errorThrown)
+				{
+					alert('Error adding / update data');
 				}
-				$("#item_pencarian").html(string);
-			},
-			error: function (jqXHR, textStatus, errorThrown)
-			{
-				alert('Error adding / update data');
-			}
-		});
+			});
+		}
 	});
 	
 </script>

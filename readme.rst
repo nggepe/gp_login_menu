@@ -1,3 +1,6 @@
+**V 1.1.0.0**
+
+
 *******************
 Apa ini?
 *******************
@@ -12,6 +15,7 @@ Fitur
 2. Logout
 3. Pencarian menu
 4. Menu dinamis dengan koneksi database
+5. Hak akses dinamis
 
 *******************
 Server Requirements
@@ -24,26 +28,39 @@ Instalasi
 1. Download code ini
 2. Exctract di localhost anda.
 3. Import database dengan nama "your_project_db" (file "your_project_db.sql" ada di folder utama).
-4. Instalasi selesai. (username: admin, password: admin).
+4. Instalasi selesai.
+5. Login -> username: direktur, password: direktur.
 
 ************
 Dokumentasi
 ************
 
--  `Pembuatan Controller Baru`_
+-  **Pembuatan Controller Baru**
 Pembuatan controller seperti pembuatan controller codeigniter biasa. Untuk controller yang ingin diisi bedasarkan login session, hapus code *extend CI_Controller* dan ubah menjadi *extend User_auth*.
 
--  `Pembuatan Modul baru`_
+-  **Pembuatan Modul baru**
 1. Buat data pada tabel modul
-2. Jika modul tersebut memiliki banyak fitur, kosongkan kolom *url*. Jika modul tidak memiliki menu lain maka anda bisa mengisi *url*
+2. Jika modul tersebut memiliki 1 menu atau lebih, kosongkan kolom *url*
+3. Jika modul tidak memiliki menu lain maka anda bisa mengisi *url*
 
--  `Pembuatan Menu baru`_
+
+-  **Pembuatan Menu baru**
 1. Buat data pada tabel menu
-2. Menu wajib memiliki id_modul
+2. Menu wajib memiliki id_modul, dan url
 
--  `Url pada menu atau modul`_
-Url ini merujuk ke controller, jika anda memiliki controller yang berada didalam folder maka: nama_folder/nama_controler.
+-  **Ketentuan penulisan url**
+1. *Url* merujuk ke *Controller*.
+2. *Url* pada **menu** atau **modul wajib** memiliki memiliki 3 *uri segment* (0,1,2).
+3. *Segment 0* adalah ``base_url()`` anda, *Segment 1* adalah **folder** anda, dan *Segment 2* adalah **Controller** anda.
+4. Jika anda tidak mengetahui *uri segment*, silakan klik `Disini <https://codeigniter.com/user_guide/libraries/uri.html>`_
 
+- **Access Control / Hak Akses User**
+1. Anda bisa mengetik **Hak akses** pada kolom pencarian menu.
+2. Pada menu ini, anda dapat menentukan menu mana yang boleh diakses pada jabatan yang tersedia.
+
+- **Lain-lain**
+1. Jika ada bug atau kesalahan kode program, anda bisa melaporkan ini pada fitur `Issues <https://github.com/nggepe/gp_login_menu/issues>`_
+2. `Donasi <https://wa.me/6281913900049?text=Halo Gilang, saya ingin berdonasi atas gp_login_menu>`_
 
 *******
 License

@@ -19,20 +19,37 @@ class Login extends CI_Controller {
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$data = $this->M_authentication->authentication($username,$password);
+
 		if ($data['status']==false) {
 			 $this->session->set_flashdata('flash_msg', '<div style="margin: 15px 15px 10px; border: 1px solid red; padding: 10px;"><b>Error, </b>silahkan masukkan username dan password<br>dengan benar</div>');
             	redirect('user_auth/Login');
 		}
 		else
 		{
-			$loginsession = array(
-			'id' => $data['data']->id,
-            'nama' => $data['data']->nama,
-            'username'=>$data['data']->username
-			);
-			$this->session->set_userdata('loginsession',$loginsession);
+			if (count($data['access_control'])<1) {
+				redirect('user_auth/Login/no_access');
+			}
+			else
+			{
+				$access_control = array();
+				foreach ($data['access_control'] as $key => $value) {
+					$access_control['modul'][] = $value->id_modul;
+					$access_control['menu'][] = $value->id_menu;
+					$access_control['url'][] = strtolower($value->url);
+				}
+				$loginsession = array(
+					'id' => $data['data']->id,
+		            'nama' => $data['data']->nama,
+		            'username'=> $data['data']->username,
+		            'id_master_jabatan' => $data['data']->id_master_jabatan,
+		            'access_control' => $access_control,
+				);
+				$this->session->set_userdata('loginsession',$loginsession);
 
-			redirect('dashboard/Home');
+				redirect(base_url().'dashboard/Home');
+			}
+
+			
 		}
 
 	}
@@ -40,5 +57,10 @@ class Login extends CI_Controller {
         $this->session->unset_userdata('loginsession');
         $this->session->sess_destroy();
         redirect('user_auth/Login');
+    }
+
+    public function no_access()
+    {
+    	$this->load->view('errors/no_access_control');
     }
 }

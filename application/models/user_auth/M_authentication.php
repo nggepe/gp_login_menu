@@ -17,9 +17,21 @@ class M_authentication extends CI_Model {
 		else
 		{
 			$data['data']=$table;
+			$data['access_control'] = $this->access_control($table->id_master_jabatan);
 			$data['status']=true;
 			return $data;
 		}
+
+	}
+
+	function access_control($id)
+	{
+		$this->db->select("ugp.id_modul, ugp.id_menu, IF(ugp.id_menu IS NULL, md.url, mn.url) as url");
+		$this->db->from('user_group_privilege ugp');
+		$this->db->join('modul md', 'md.id = ugp.id_modul', 'left');
+		$this->db->join('menu mn', 'mn.id = ugp.id_menu', 'left');
+		$this->db->where('id_master_jabatan', $id);
+		return $this->db->get()->result();
 
 	}
 

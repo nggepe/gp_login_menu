@@ -1,9 +1,18 @@
+<?php $loginsession = $this->session->userdata('loginsession');?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Layout &rsaquo; Default &mdash; Stisla</title>
+  <?php if ($this->uri->segment(2)!="Home" and $this->uri->segment(2) !="" ) {
+  		$title = $this->uri->segment(1)." ".$this->uri->segment(2);
+  }
+  	else {
+  		$title = $this->uri->segment(1);
+  	}
+   ?>
+  <title>Tani Agung | <?= $title ?> </title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/admin/bootstrap/css/bootstrap.min.css">
@@ -14,9 +23,10 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/admin/assets/css/style.css">
   <link rel="stylesheet" href="<?= base_url() ?>assets/admin/assets/css/components.css">
+  <link rel="stylesheet" href="<?= base_url() ?>assets/helper/css/custom.css">
 </head>
 
-<body>
+<body oncontextmenu="return false;">
   	<div id="app">
     	<div class="main-wrapper">
       		<div class="navbar-bg"></div>
@@ -43,7 +53,7 @@
           	</div>
         </form>
 		<ul class="navbar-nav navbar-right">
-			<li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
+			<!-- <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
 			<div class="dropdown-menu dropdown-list dropdown-menu-right">
 				<div class="dropdown-header">Messages
 				<div class="float-right">
@@ -167,7 +177,7 @@
 				<a href="#">View All <i class="fas fa-chevron-right"></i></a>
 				</div>
 			</div>
-			</li>
+			</li> -->
 			<li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
 			<img alt="image" src="<?= base_url() ?>assets/admin/assets/img/avatar/avatar-1.png" class="rounded-circle mr-1">
 			<div class="d-sm-none d-lg-inline-block">Hi, <?= $this->session->userdata('loginsession')['nama'] ?></div></a>
@@ -204,7 +214,7 @@
 		</div>
 		<ul class="sidebar-menu">
 			<li class="menu-header">Menu</li>
-			<?php foreach ($modul as $key) { ?>
+			<?php foreach ($modul as $key) { if (in_array($key->id, $loginsession['access_control']['modul'])) {?>
 				<?php
 					if ($key->tipe=="dropdown") {
 				?>
@@ -217,9 +227,13 @@
 							$this->db->order_by('menu_nama', 'asc');
 							$menu = $this->db->get()->result();
 							foreach ($menu as $menus) {
+								if (in_array($menus->id, $loginsession['access_control']['menu'])) {
+									
+								
 						?>
-							<li><a class="nav-link" id="sub_<?= $menus->id ?>" href="<?= base_url().$menus->url ?>"><?= $menus->menu_nama ?></a></li>
+									<li><a class="nav-link" id="sub_<?= $menus->id ?>" href="<?= base_url().$menus->url ?>"><?= $menus->menu_nama ?></a></li>
 						<?php
+								}
 							}
 						?>
 						</ul>
@@ -237,7 +251,7 @@
 				
 
 
-			<?php } ?>
+			<?php }} ?>
 			
 		</ul>
 

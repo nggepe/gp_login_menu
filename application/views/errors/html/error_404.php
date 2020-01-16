@@ -33,7 +33,7 @@
           <div class="page-inner">
             <h1>404</h1>
             <div class="page-description">
-              Halaman yang anda cari tidak ketemu, Mohon hubungi developer!
+              Halaman belum tersedia, Mohon hubungi developer!
             </div>
             <div class="page-search">
               <form>
