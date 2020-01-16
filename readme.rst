@@ -60,7 +60,13 @@ Pembuatan controller seperti pembuatan controller codeigniter biasa. Untuk contr
 
 - **Lain-lain**
 1. Jika ada bug atau kesalahan kode program, anda bisa melaporkan ini pada fitur `Issues <https://github.com/nggepe/gp_login_menu/issues>`_
-2. `Donasi <https://wa.me/6281913900049?text=Halo%20Gilang,%20saya%20ingin%20berdonasi%20atas%20gp_login_menu>`_
+2. Tidak diwajibkan `berdonasi <https://wa.me/6281913900049?text=Halo%20Gilang,%20saya%20ingin%20berdonasi%20atas%20gp_login_menu>`_ :D
+
+*******
+Desain
+*******
+
+Stisla bootstrap template by `Muhamad Nauval Azhar <https://nauv.al/projects/>`_
 
 *******
 License
