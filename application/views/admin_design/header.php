@@ -12,7 +12,7 @@
   		$title = $this->uri->segment(1);
   	}
    ?>
-  <title>Tani Agung | <?= $title ?> </title>
+  <title>GP | <?= $title ?> </title>
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/admin/bootstrap/css/bootstrap.min.css">
@@ -207,7 +207,7 @@
 	<div class="main-sidebar">
 	<aside id="sidebar-wrapper">
 		<div class="sidebar-brand">
-		<a href="#">Tani Agung</a>
+		<a href="#">GP</a>
 		</div>
 		<div class="sidebar-brand sidebar-brand-sm">
 		<a href="index.html">St</a>
