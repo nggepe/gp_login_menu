@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2020 at 06:01 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.8
+-- Generation Time: Feb 12, 2020 at 03:58 PM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 5.6.36
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -68,6 +68,7 @@ INSERT INTO `menu` (`id`, `menu_nama`, `url`, `id_modul`) VALUES
 (4, 'User', 'master/user', 2),
 (5, 'Pegawai', 'master/pegawai', 2),
 (6, 'Jabatan', 'master/jabatan', 2),
+(7, 'Ubah Password', 'setting/Ubah_password', 4),
 (8, 'Hak Akses', 'setting/User_privilege', 4);
 
 -- --------------------------------------------------------
@@ -137,15 +138,16 @@ CREATE TABLE `user_group_privilege` (
 --
 
 INSERT INTO `user_group_privilege` (`id`, `id_master_jabatan`, `id_menu`, `id_modul`) VALUES
-(120, 1, 8, 4),
-(121, 1, NULL, 1),
-(122, 1, 1, 2),
-(123, 1, 2, 2),
-(124, 1, 3, 2),
-(125, 1, 4, 2),
-(126, 1, 5, 2),
-(127, 1, 6, 2),
-(131, 5, NULL, 1);
+(131, 5, NULL, 1),
+(132, 1, 8, 4),
+(133, 1, NULL, 1),
+(134, 1, 1, 2),
+(135, 1, 2, 2),
+(136, 1, 3, 2),
+(137, 1, 4, 2),
+(138, 1, 5, 2),
+(139, 1, 6, 2),
+(140, 1, 7, 4);
 
 --
 -- Indexes for dumped tables
@@ -218,7 +220,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user_group_privilege`
 --
 ALTER TABLE `user_group_privilege`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=141;
 
 --
 -- Constraints for dumped tables
