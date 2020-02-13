@@ -17,7 +17,7 @@ class M_authentication extends CI_Model {
 		else
 		{
 			$data['data']=$table;
-			$data['access_control'] = $this->access_control($table->id_master_jabatan);
+			$data['access_control'] = $this->access_control($table->id_user_privilege);
 			$data['status']=true;
 			return $data;
 		}
@@ -30,7 +30,7 @@ class M_authentication extends CI_Model {
 		$this->db->from('user_group_privilege ugp');
 		$this->db->join('modul md', 'md.id = ugp.id_modul', 'left');
 		$this->db->join('menu mn', 'mn.id = ugp.id_menu', 'left');
-		$this->db->where('id_master_jabatan', $id);
+		$this->db->where('id_user_privilege', $id);
 		return $this->db->get()->result();
 
 	}

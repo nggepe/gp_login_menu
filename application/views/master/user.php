@@ -75,8 +75,8 @@ $this->load->view('admin_design/header', $modul);
                     <input type="text" class="form-control" name="nama" id="nama" placeholder="isi nama user">
                 </div>
                 <div class="form-group">
-                    <label class="form-label" for="id_master_jabatan">Jabatan</label>
-                    <input type="text" name="id_master_jabatan" id="id_master_jabatan" class="form-control">
+                    <label class="form-label" for="id_user_privilege">Privilege</label>
+                    <input type="text" name="id_user_privilege" id="id_user_privilege" class="form-control">
                 </div>
                 <div class="form-group">
                     <label>Alamat</label>
@@ -165,7 +165,7 @@ function clear_data()
     $("#username").val("");
     $("#password").val("");
     $("#password2").val("");
-    $("#id_master_jabatan").select2("val", "");
+    $("#id_user_privilege").select2("val", "");
 }
 
 function form_validation()
@@ -215,14 +215,14 @@ function form_validation()
         $("#password2").removeClass("is-invalid");
         $("#password2").next().text("");
     }
-    if ($("#id_master_jabatan").val()=="") {
-        $("#id_master_jabatan").addClass("is-invalid");
-        notif_warning('#id_master_jabatan','Wajib diisi !');
+    if ($("#id_user_privilege").val()=="") {
+        $("#id_user_privilege").addClass("is-invalid");
+        notif_warning('#id_user_privilege','Wajib diisi !');
         status = "false";
     }
     else{
-        $("#id_master_jabatan").removeClass("is-invalid");
-        $("#id_master_jabatan").next().text("");
+        $("#id_user_privilege").removeClass("is-invalid");
+        $("#id_user_privilege").next().text("");
     }
     return status;
 }
@@ -274,7 +274,7 @@ function edit(id)
             $("#no_telpon").val(data.no_telpon);
             $("#username").val(data.username);
             $('#modal_form').modal("show");
-            $("#id_master_jabatan").select2("val", data.id_master_jabatan);
+            $("#id_user_privilege").select2("val", data.id_user_privilege);
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
@@ -316,11 +316,11 @@ function hapus(id)
         }
     });
 }
-$('#id_master_jabatan').select2({
-        placeholder : "Input jabatan",
+$('#id_user_privilege').select2({
+        placeholder : "Input privilege (hak akses)",
         allowClear : true,
         ajax: {
-            url: '<?php echo base_url(); ?>master/User/select2_jabatan',
+            url: '<?php echo base_url(); ?>master/User/select2_user_privilege',
             dataType: 'json',
             type: 'post',
             quietMillis: 100,
@@ -335,7 +335,7 @@ $('#id_master_jabatan').select2({
         initSelection : function( el, cb ) {
             var id = $(el).val();
             $.ajax({
-                url: '<?php echo base_url(); ?>master/User/select2_jabatan',
+                url: '<?php echo base_url(); ?>master/User/select2_user_privilege',
                 data: { id: id },
                 dataType: 'json',
                 type: 'post'
@@ -352,7 +352,7 @@ $('#id_master_jabatan').select2({
             return "<div>" +data.nama+"<div>";
         },
         formatSelection: function ( data ) {
-            $('#id_master_jabatan').val(data.id);
+            $('#id_user_privilege').val(data.id);
             return data.nama;
             
         },

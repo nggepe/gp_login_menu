@@ -24,7 +24,7 @@ class User_privilege extends User_auth {
 
 	public function show_privilege()
 	{
-		$this->privilege->show_privilege($this->input->post('jabatan'));
+		$this->privilege->show_privilege($this->input->post('user_privilege'));
 	}
 
 

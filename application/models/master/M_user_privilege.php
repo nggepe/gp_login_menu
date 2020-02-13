@@ -1,8 +1,8 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
     
-class M_jabatan extends CI_Model {
+class M_user_privilege extends CI_Model {
 
-	var $table = 'master_jabatan';
+	var $table = 'user_privilege';
 	var $column = array('id','nama'); //set column field database for order and search
 	var $order = array('id' => 'desc');
 

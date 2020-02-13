@@ -1,23 +1,23 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Jabatan extends User_auth {
+class User_privilege extends User_auth {
 
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('master/M_jabatan','jabatan');
+		$this->load->model('master/M_user_privilege','user_privilege');
 	}
 
 
 	public function index()
 	{
-		$this->load->view('master/jabatan');
+		$this->load->view('master/user_privilege');
 	}
 
 	public function ajaxTable()
 	{
-		$list = $this->jabatan->tampil();
+		$list = $this->user_privilege->tampil();
 		$data = array();
 		$no = $_POST['start'];
 		foreach ($list as $key) {
@@ -36,8 +36,8 @@ class Jabatan extends User_auth {
 
 		$output = array(
 						"draw" => $_POST['draw'],
-						"recordsTotal" => $this->jabatan->count_all(),
-						"recordsFiltered" => $this->jabatan->count_filtered(),
+						"recordsTotal" => $this->user_privilege->count_all(),
+						"recordsFiltered" => $this->user_privilege->count_filtered(),
 						"data" => $data,
 						"query"=> $this->db->last_query()
 				);
@@ -47,22 +47,22 @@ class Jabatan extends User_auth {
 
 	public function ajax_save()
 	{
-		$this->jabatan->save($this->input->post());
+		$this->user_privilege->save($this->input->post());
 		echo json_encode("success");
 	}
 
 	public function ajax_edit($id)
 	{
-		$this->jabatan->edit($id);
+		$this->user_privilege->edit($id);
 	}
 
 	public function ajax_delete($id)
 	{
-		$this->jabatan->ajax_delete($id);
+		$this->user_privilege->ajax_delete($id);
 	}
 
 	public function ajax_update($id)
 	{
-		$this->jabatan->update($id, $this->input->post());
+		$this->user_privilege->update($id, $this->input->post());
 	}
 }

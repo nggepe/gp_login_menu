@@ -29,10 +29,10 @@ $this->load->view('admin_design/header', $modul);
                 </div>
                 
                 <div class="card-body">
-                    <?php $jabatan = $this->db->get('master_jabatan')->result(); ?>
+                    <?php $user_privilege = $this->db->get('user_privilege')->result(); ?>
                     <div class="col-12 col-md-12 col-lg-12">
-                        <select class="form-control" id="jabatan-id">
-                            <?php foreach ($jabatan as $key => $value): ?>
+                        <select class="form-control" id="user_privilege-id">
+                            <?php foreach ($user_privilege as $key => $value): ?>
                                 <option value="<?= $value->id ?>"><?= $value->nama ?></option>
                             <?php endforeach ?>
                             
@@ -98,7 +98,7 @@ $(document).ready(function(){
 
 });
 
-$('#jabatan-id').change(function(e){
+$('#user_privilege-id').change(function(e){
     show_privilege();
 });
 
@@ -107,7 +107,7 @@ function show_privilege()
     $.ajax({
         url : "<?= base_url() ?>setting/User_privilege/show_privilege",
         type: "POST",
-        data: {jabatan: $("#jabatan-id").val()},
+        data: {user_privilege: $("#user_privilege-id").val()},
         dataType: "JSON",
         async: false,
         success: function(data)
@@ -242,7 +242,7 @@ $("#btn-simpan-1").click(function(){
     $.ajax({
         url : "<?= base_url() ?>setting/User_privilege/access_control",
         type: "POST",
-        data: {akses: global_menu, jabatan: $("#jabatan-id").val()},
+        data: {akses: global_menu, user_privilege: $("#user_privilege-id").val()},
         dataType: "JSON",
         success: function(data)
         {

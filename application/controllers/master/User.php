@@ -76,10 +76,8 @@ class User extends User_auth {
 		$this->user->update($id, $data);
 	}
 
-	public function select2_jabatan()
+	public function select2_user_privilege()
     {
-        
-
         $return = array( 'total' => 0, 'rows' => array() );
 
         $term = $this->input->get_post('query');
@@ -101,7 +99,7 @@ class User extends User_auth {
 
         $SQL = "
             SELECT count(*) as total
-            FROM master_jabatan
+            FROM user_privilege
             {$where}
         ";
 
@@ -112,7 +110,7 @@ class User extends User_auth {
 
             $sql = "SELECT
                 *
-            FROM master_jabatan
+            FROM user_privilege
             {$where}
             ORDER BY nama ASC
             LIMIT $start, $limit";
