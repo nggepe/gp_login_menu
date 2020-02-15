@@ -21,7 +21,7 @@ class Search extends CI_Controller {
 		$this->db->from('user_group_privilege ugp');
 		$this->db->join("modul", "modul.id = ugp.id_modul", "left");
 		$this->db->join("menu", "modul.id = menu.id_modul", "left");
-		$this->db->where("ugp.id_master_jabatan", $loginsession['id_master_jabatan']);
+		$this->db->where("ugp.id_user_privilege", $loginsession['id_user_privilege']);
 		$this->db->group_start();
 		$this->db->like("modul.nama", $this->input->post('key'));
 		$this->db->or_like("menu.menu_nama", $this->input->post('key'));
