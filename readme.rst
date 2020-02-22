@@ -16,6 +16,7 @@ Fitur
 3. Pencarian menu
 4. Menu dinamis dengan koneksi database
 5. Hak akses dinamis
+6. Generator CRUD ajax datatable serverside
 
 *******************
 Server Requirements
@@ -57,6 +58,13 @@ Pembuatan controller seperti pembuatan controller codeigniter biasa. Untuk contr
 - **Access Control / Hak Akses User**
 1. Anda bisa mengetik **Hak akses** pada kolom pencarian menu.
 2. Pada menu ini, anda dapat menentukan menu mana yang boleh diakses pada jabatan yang tersedia.
+
+- **Generator CRUD Ajax Datatable Serverside**
+1. Pembuatan table dilakukan pada menu *setting/generator*
+2. Kolom pertama dianggap sebagai id oleh sistem jadi sudah disediakan pembuatan idnya (tinggal rename)
+3. File generator dapat dilihat pada folder *generate* yang berada pada folder *controllers, models, dan views*
+4. Nama menu dan relasi ke modul langsung tersimpan pada tabel menu
+5. Jika anda langsung memberi hak akses, maka otomatis akan tersimpan pada *user_group_privilege*, dan session juga langsung tersimpan.
 
 - **Lain-lain**
 1. Jika ada bug atau kesalahan kode program, anda bisa melaporkan ini pada fitur `Issues <https://github.com/nggepe/gp_login_menu/issues>`_
