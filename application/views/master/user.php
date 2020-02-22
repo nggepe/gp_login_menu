@@ -1,4 +1,4 @@
-
+<?php $loginsession = $this->session->userdata('loginsession');?>
 <?php 
 $modul['modul'] = $this->db->get("modul")->result();
 $this->load->view('admin_design/header', $modul); 

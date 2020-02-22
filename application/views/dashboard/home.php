@@ -22,11 +22,11 @@ $this->load->view('admin_design/header', $modul);
             <div class="card-header">
             <h4>Beberapa modul</h4>
             </div>
-            <div class="card-body">
+            <div class="card-body row">
                 
-                <div class="row">
+                
                 <?php foreach ($modul['modul'] as $key => $value){ if (in_array($value->id, $loginsession['access_control']['modul'])) {?>
-                        <div class="col-6 col-md-6 col-lg-6">
+                        <div class="col-md-6">
                             <div class="card card-<?= $style[array_rand($style)] ?>">
                                 <div class="card-header" style="cursor: pointer;" onclick="trigger_clicks('<?= $value->id ?>-<?= $value->nama ?>')">
                                     <h4><i class="<?= $value->icon ?>"></i> <?= $value->nama ?></h4>
@@ -56,7 +56,7 @@ $this->load->view('admin_design/header', $modul);
                             </div>
                         </div>
                 <?php }} ?>
-                </div>
+                
                 
             </p>
             </div>

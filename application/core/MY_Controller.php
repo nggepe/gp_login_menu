@@ -14,6 +14,7 @@ class User_auth extends CI_Controller
 		{
 			
 			$url = "";
+			
 			for ($i = 1; $i<=2; $i++){
 				$url = $url."".$this->uri->segment($i)."/";
 			}

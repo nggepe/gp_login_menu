@@ -1,4 +1,5 @@
 
+
 <?php 
 $modul['modul'] = $this->db->get("modul")->result();
 $this->load->view('admin_design/header', $modul); 
@@ -12,48 +13,47 @@ $this->load->view('admin_design/header', $modul);
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-        <h1>Menu <?= $this->uri->segment(2) ?></h1>
+        <h1>Menu Percobaan ke 2</h1>
         <div class="section-header-breadcrumb">
             <div class="breadcrumb-item active"><a href="#"><?= $this->uri->segment(1) ?></a></div>
             <div class="breadcrumb-item"><a href="#"><?= $this->uri->segment(2) ?></a></div>
-            
+
         </div>
         </div>
 
         <div class="section-body">
-        <h2 class="section-title">Halaman manajemen <?= $this->uri->segment(2) ?></h2>
-        <p class="section-lead">Halaman ini digunakan untuk mengelola data <?= $this->uri->segment(2) ?>.</p>
-        <div class="card">
-            <div class="card-header">
-                <h4>Tabel data <?= $this->uri->segment(2) ?></h4>
-            </div>
-            
-            <div class="card-body">
-                <button class="btn btn-md btn-info" id="btn-tambah"><i class="fa fa-plus"></i> Tambah data <?= $this->uri->segment(2) ?></button>
-                <hr>
-                <div class="table-responsive">
-                    <table class="table table-striped" id="ajax_table">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Nama jabatan</th>
-                                <th>Act</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+	        <h2 class="section-title">Halaman manajemen Percobaan ke 2</h2>
+	        <p class="section-lead">Halaman ini digunakan untuk mengelola data Percobaan ke 2.</p>
+	        <div class="card">
+	        	<div class="card-header">
+	                <h4>Tabel data Percobaan ke 2</h4>
+	            </div>
+	            
+	            <div class="card-body">
+	                <button class="btn btn-md btn-info" id="btn-tambah"><i class="fa fa-plus"></i> Tambah data Percobaan ke 2</button>
+	                <hr>
+	                <div class="table-responsive">
+	                    <table class="table table-striped" id="ajax_table">
+	                        <thead>
+	                            <tr>
+	                                <th>id</th>
+									<th>harga</th>
+									
+	                            </tr>
+	                        </thead>
+	                        <tbody>
 
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="card-footer bg-whitesmoke">
-            This is card footer
-            </div>
-        </div>
-        </div>
-    </section>
+	                        </tbody>
+	                    </table>
+	                </div>
+	            </div>
+	            <div class="card-footer bg-whitesmoke">
+	            This is card footer
+	            </div>
+	        </div>
+	    </div>
+	</section>
 </div>
-
 <div class="modal fade" tabindex="-1" role="dialog" id="modal_form">
     <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -66,9 +66,14 @@ $this->load->view('admin_design/header', $modul);
         <div class="modal-body">
             <form id="form_simpan">
                 <div class="form-group">
-                    <label class="form-label" for="nama">Nama jabatan</label>
-                    <input type="text" class="form-control" name="nama" id="nama" placeholder="isi nama jabatan">
-                </div>
+		                    <label class="form-label" for="id">id</label>
+		                    <input type="text" class="form-control" name="id" id="id" placeholder="id">
+		                </div>
+						<div class="form-group">
+		                    <label class="form-label" for="harga">harga</label>
+		                    <input type="text" class="form-control" name="harga" id="harga" placeholder="harga">
+		                </div>
+						
             </form>
         </div>
         <div class="modal-footer bg-whitesmoke br">
@@ -78,6 +83,7 @@ $this->load->view('admin_design/header', $modul);
     </div>
     </div>
 </div>
+
 <?php $this->load->view('admin_design/footer', $modul); ?>
 <script src="<?php echo base_url(); ?>assets/admin/modules/datatables/datatables.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/admin/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
@@ -87,12 +93,11 @@ $this->load->view('admin_design/header', $modul);
 <script>
 var save_method = "add";
 var global_id;
-
 $(document).ready(function(){
     table = $('#ajax_table').DataTable({
         "order": [],
         "ajax": {
-            "url": "<?php echo base_url('master/jabatan/ajaxTable');?>",
+            "url": "<?php echo base_url('generated/percobaan_ke_2/ajaxTable');?>",
             "type": "POST"
         },
         "columnDefs": [
@@ -118,38 +123,52 @@ $("#btn-tambah").click(function(){
     save_method = "add";
     clear_data();
     $("#modal_form").modal("show");
-    $(".modal-title").text("Tambah data <?= $this->uri->segment(2) ?>");
+    $(".modal-title").text("Tambah data Percobaan ke 2");
 });
 
 function clear_data()
 {
-    $("#nama").val("");
+    $('#id').val('');
+	$('#harga').val('');
+	
 }
 
 function form_validation()
 {
     var status ="true";
-    if ($("#nama").val()=="") {
-        $("#nama").addClass("is-invalid");
-        notif_warning('#nama', 'Wajib diisi!');
+    
+	if ($("#id").val()=="") {
+        $("#id").addClass("is-invalid");
+        notif_warning('#id', 'Wajib diisi!');
         status = "false";
     }
     else {
-        $("#nama").removeClass("is-invalid");
-        $("#nama").next().text("");
+        $("#id").removeClass("is-invalid");
+        $("#id").next().text("");
     }
-    return status;
-    
+		
+	if ($("#harga").val()=="") {
+        $("#harga").addClass("is-invalid");
+        notif_warning('#harga', 'Wajib diisi!');
+        status = "false";
+    }
+    else {
+        $("#harga").removeClass("is-invalid");
+        $("#harga").next().text("");
+    }
+		
+    return status;    
 }
-
 $("#btn-simpan").click(function(){
     status = form_validation();
+    $('#btn-simpan').text('Menyimpan...'); //change button text
+    $('#btn-simpan').attr('disabled',true); //set button enable 
     if(status =="true") {
         if (save_method=="add") {
-            url = "<?= base_url() ?>master/jabatan/ajax_save";
+            url = "<?= base_url() ?>generated/percobaan_ke_2/ajax_save";
         }
         else{
-            url = "<?= base_url() ?>master/jabatan/ajax_update/"+global_id;
+            url = "<?= base_url() ?>generated/percobaan_ke_2/ajax_update/"+global_id;
         }
         $.ajax({
             url : url,
@@ -167,7 +186,7 @@ $("#btn-simpan").click(function(){
             error: function (jqXHR, textStatus, errorThrown)
             {
                 alert('Error adding / update data');
-                $('#btn-simpan').text('Menyimpan...'); //change button text
+                $('#btn-simpan').text('Simpan'); //change button text
                 $('#btn-simpan').attr('disabled',false); //set button enable 
             }
         });
@@ -179,13 +198,16 @@ function edit(id)
     global_id = id;
     save_method = "edit";
     $.ajax({
-        url : "<?php echo base_url(); ?>master/jabatan/ajax_edit/"+id,
+        url : "<?php echo base_url(); ?>generated/percobaan_ke_2/ajax_edit/"+id,
         type: "POST",
         dataType: "JSON",
         success: function(data)
         {
-            $("#nama").val(data.nama);
+            $("#id").val(data.id);
+			$("#harga").val(data.harga);
+			
             $('#modal_form').modal("show");
+            $(".modal-title").text("Ubah data Percobaan ke 2");
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
@@ -197,20 +219,20 @@ function edit(id)
 function hapus(id)
 {
     swal({   
-        title: "Anda yakin?",   
-        text: "Data akan terhapus secara permanen!",   
-        type: "warning",   
+        title: "Anda yakin?",
+        text: "Data akan terhapus secara permanen!",
+        type: "warning",
         showCancelButton: true,   
         confirmButtonColor: "#DD6B55",   
-        confirmButtonText: "Ya, saya yakin!",   
-        cancelButtonText: "Tidak, batalkan!",   
+        confirmButtonText: "Ya, saya yakin!",
+        cancelButtonText: "Tidak, batalkan!",
         closeOnConfirm: true,
         closeOnCancel: true 
     }, function(isConfirm){   
         if (isConfirm) {
 
             $.ajax({
-                url : "<?php echo base_url(); ?>master/jabatan/ajax_delete/"+id,
+                url : "<?php echo base_url(); ?>generated/percobaan_ke_2/ajax_delete/"+id,
                 type: "POST",
                 dataType: "JSON",
                 success: function(data)
@@ -228,3 +250,4 @@ function hapus(id)
     });
 }
 </script>
+	
