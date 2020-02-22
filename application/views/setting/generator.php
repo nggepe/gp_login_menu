@@ -95,7 +95,6 @@ $this->load->view('admin_design/header', $modul);
             </div>
             <div class="modal-footer bg-whitesmoke br">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-            <button type="button" class="btn btn-primary" id="btn-simpan"> Simpan</button>
             </div>
         </div>
     </div>

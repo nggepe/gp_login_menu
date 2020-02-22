@@ -2,8 +2,8 @@
 function controler_builder($menu_code, $column, $model_name)
 {
 	$column_in_ajax = "";
-	foreach ($column as $key => $value) {
-		$column_in_ajax.= "\$row[] = \$key->".$value.";\n\t\t\t";
+	for ($i=1; $i < count($column) ; $i++) { 
+		$column_in_ajax.= "\$row[] = \$key->".$column[$i].";\n\t\t\t";
 	}
 
 	$filename = "./application/controllers/generated/".$menu_code.".php";
@@ -33,6 +33,7 @@ class ".$menu_code." extends User_auth {
 		foreach (\$list as \$key) {
 			\$no++;
 			\$row = array();
+			\$row[] = \$no++;
 			".$column_in_ajax."
 			\$row[] = '<a class=\"btn btn-sm btn-primary\" href=\"javascript:void(0)\" title=\"Edit\" onclick=\"edit('.\"'\".\$key->".$column[0].".\"'\".')\"><i class=\"fa fa-edit\"></i></a>
 				  <a class=\"btn btn-sm btn-danger\" href=\"javascript:void(0)\" title=\"Hapus\" onclick=\"hapus('.\"'\".\$key->".$column[0].".\"'\".')\"><i class=\"fa fa-trash\"></i></a>';
@@ -194,40 +195,33 @@ class ".$model_name." extends CI_Model {
 
 function view_builder($menu_code, $column, $menu_name){
 	$column_in_thead = "";
-	foreach ($column as $key => $value) {
-		$column_in_thead.= "<th>".$value."</th>\n\t\t\t\t\t\t\t\t\t";
-	}
-
 	$column_clearing = "";
-	foreach ($column as $key => $value) {
-		$column_clearing .= "\$('#".$value."').val('');\n\t";
-	}
 
 	$column_validate = "";
-	foreach ($column as $key => $value) {
+
+	$column_inform = "";
+	$column_editing = "";
+
+	for ($i=1; $i < count($column) ; $i++) { 
+		$column_in_thead.= "<th>".$column[$i]."</th>\n\t\t\t\t\t\t\t\t\t";
+		$column_clearing .= "\$('#".$column[$i]."').val('');\n\t";
 		$column_validate .= "
-	if ($(\"#".$value."\").val()==\"\") {
-        \$(\"#".$value."\").addClass(\"is-invalid\");
-        notif_warning('#".$value."', 'Wajib diisi!');
+	if ($(\"#".$column[$i]."\").val()==\"\") {
+        \$(\"#".$column[$i]."\").addClass(\"is-invalid\");
+        notif_warning('#".$column[$i]."', 'Wajib diisi!');
         status = \"false\";
     }
     else {
-        \$(\"#".$value."\").removeClass(\"is-invalid\");
-        \$(\"#".$value."\").next().text(\"\");
+        \$(\"#".$column[$i]."\").removeClass(\"is-invalid\");
+        \$(\"#".$column[$i]."\").next().text(\"\");
     }
 		";
-	}
-	$column_inform = "";
-	foreach ($column as $key => $value) {
-		$column_inform .= "<div class=\"form-group\">
-		                    <label class=\"form-label\" for=\"".$value."\">".$value."</label>
-		                    <input type=\"text\" class=\"form-control\" name=\"".$value."\" id=\"".$value."\" placeholder=\"".$value."\">
-		                </div>\n\t\t\t\t\t\t";
-	}
 
-	$column_editing = "";
-	foreach ($column as $key => $value) {
-		$column_editing.= "\$(\"#".$value."\").val(data.".$value.");\n\t\t\t";
+		$column_inform .= "<div class=\"form-group\">
+		                    <label class=\"form-label\" for=\"".$column[$i]."\">".$column[$i]."</label>
+		                    <input type=\"text\" class=\"form-control\" name=\"".$column[$i]."\" id=\"".$column[$i]."\" placeholder=\"".$column[$i]."\">
+		                </div>\n\t\t\t\t\t\t";
+		$column_editing.= "\$(\"#".$column[$i]."\").val(data.".$column[$i].");\n\t\t\t";
 	}
 
 	$filename = "./application/views/generated/V_".$menu_code.".php";
@@ -271,7 +265,9 @@ function view_builder($menu_code, $column, $menu_name){
 	                    <table class=\"table table-striped\" id=\"ajax_table\">
 	                        <thead>
 	                            <tr>
+	                            	<th>No</th>
 	                                ".$column_in_thead."
+	                                <th>#</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
