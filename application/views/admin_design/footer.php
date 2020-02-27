@@ -10,6 +10,9 @@
   </div>
 
   <!-- General JS Scripts -->
+  <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = '<?= base_url() ?>assets/admin/awesome/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+  <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = '<?= base_url() ?>assets/admin/assets/css/components.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+  <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = '<?= base_url() ?>assets/helper/css/custom.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
   <script src="<?php echo base_url(); ?>assets/admin/modules/jquery.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/admin/modules/popper.js"></script>
 	<script src="<?php echo base_url(); ?>assets/admin/modules/tooltip.js"></script>

@@ -16,14 +16,14 @@
 
   <!-- General CSS Files -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/admin/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?= base_url() ?>assets/admin/awesome/css/all.css">
+  <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/admin/awesome/css/all.css"> -->
 
   <!-- CSS Libraries -->
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="<?= base_url() ?>assets/admin/assets/css/style.css">
-  <link rel="stylesheet" href="<?= base_url() ?>assets/admin/assets/css/components.css">
-  <link rel="stylesheet" href="<?= base_url() ?>assets/helper/css/custom.css">
+  <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/admin/assets/css/components.css"> -->
+  <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/helper/css/custom.css"> -->
 </head>
 
 <body oncontextmenu="return false;">
