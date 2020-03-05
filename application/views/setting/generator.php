@@ -1,15 +1,4 @@
 
-<?php 
-$modul['modul'] = $this->db->get("modul")->result();
-$this->load->view('admin_design/header', $modul); 
-?>
-
-
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/modules/datatables/datatables.min.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
-<link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/modules/select2/select2.css">
-<link href="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
       <!-- Main Content -->
 <div class="main-content">
     <section class="section">
@@ -99,13 +88,7 @@ $this->load->view('admin_design/header', $modul);
         </div>
     </div>
 </div>
-<?php $this->load->view('admin_design/footer', $modul); ?>
-<script src="<?php echo base_url(); ?>assets/admin/modules/datatables/datatables.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/modules/datatables/Select-1.2.4/js/dataTables.select.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/plugins/sweetalert/sweetalert.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/admin/modules/select2/select2.min.js"></script>
-<script src="<?php echo base_url(); ?>assets/helper/js/custom_helper.js"></script>
+
 <script type="text/javascript">
 var global_save = [];
 var iteration = 0;
@@ -407,7 +390,7 @@ function build()
                                     closeOnCancel: true 
                                 }, function(isConfirm){   
                                     if (isConfirm) {
-                                        window.location.replace("<?php echo base_url() ?>/"+data['url']);
+                                        window.location.hash("#"+data['url']);
                                     }
                                 });
                             },

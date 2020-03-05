@@ -1,8 +1,4 @@
 <?php $loginsession = $this->session->userdata('loginsession');?>
-<?php 
-$modul['modul'] = $this->db->get("modul")->result();
-$this->load->view('admin_design/header', $modul); 
-?>
       <!-- Main Content -->
 <div class="main-content">
     <section class="section">
@@ -20,54 +16,103 @@ $this->load->view('admin_design/header', $modul);
         <p class="section-lead">Halaman ini hanya perias dan jalan pintas untuk menuju menu.</p>
         <div class="card card-<?= $style[array_rand($style)] ?>">
             <div class="card-header">
-            <h4>Beberapa modul</h4>
+            <h4>User & Agent</h4>
             </div>
             <div class="card-body row">
-                
-                
-                <?php foreach ($modul['modul'] as $key => $value){ if (in_array($value->id, $loginsession['access_control']['modul'])) {?>
-                        <div class="col-md-6">
-                            <div class="card card-<?= $style[array_rand($style)] ?>">
-                                <div class="card-header" style="cursor: pointer;" onclick="trigger_clicks('<?= $value->id ?>-<?= $value->nama ?>')">
-                                    <h4><i class="<?= $value->icon ?>"></i> <?= $value->nama ?></h4>
-                                    <div class="card-header-action">
-                                        <a id="<?= $value->id ?>-<?= $value->nama ?>" data-collapse="#mycard-collapse-<?= $value->id ?>" class="btn btn-icon btn-info" href="#"><i class="fas fa-plus"></i></a>
-                                    </div>
-                                </div>
-                                <div class="collapse" id="mycard-collapse-<?= $value->id ?>">
-                                    <div class="card-body" id="<?= $value->id ?>">
-                                        <?php
-                                            $this->db->where('id_modul', $value->id);
-                                            $menu = $this->db->get('menu')->result();
-                                            if ($menu) { $warna = $style[array_rand($style)]; ?>
-                                                <?php foreach ($menu as $menu): if (in_array($menu->id, $loginsession['access_control']['menu'])) {?>
-                                                    <ul class="list-group">
-                                                        <a href="<?= base_url()?>/<?= $menu->url ?>">
-                                                            <li class="list-group-item list-group-item-<?= $warna ?>"><?= $menu->menu_nama ?></li>
-                                                        </a>
-                                                    </ul>
-                                                <?php } endforeach ?>
-                                                
-                                            <?php }
-                                        ?>
-
-                                    </div>
-                                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-primary">
+                            <i class="far fa-circle"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>IP Address</h4>
+                            </div>
+                            <div class="card-body">
+                                <?php echo $alamat_ip ?>
                             </div>
                         </div>
-                <?php }} ?>
-                
-                
-            </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-danger">
+                            <i class="far fa-newspaper"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Platform</h4>
+                            </div>
+                            <div class="card-body">
+                                <?php echo $platform ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-6 col-12">
+                    <div class="card card-statistic-1">
+                        <div class="card-icon bg-success">
+                            <i class="far fa-file"></i>
+                        </div>
+                        <div class="card-wrap">
+                            <div class="card-header">
+                                <h4>Browser</h4>
+                            </div>
+                            <div class="card-body">
+                                <?php echo $agent ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card col-md-12">
+                    <div class="card-header">
+                        <h4>Profil</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row pb-2">
+                            <div class="col-md-2 col-sm-4">
+                                <div class="avatar-item mb-0">
+                                    <img alt="image" src="<?= base_url() ?>assets/admin/assets/img/avatar/avatar-4.png" class="img-fluid" data-toggle="tooltip" title="Egi Ferdian">
+                                    <div class="avatar-badge" title="Admin" data-toggle="tooltip"><i class="fas fa-cog"></i></div>
+                                </div>
+                            </div>
+                            <div class="col-md-10 col-sm-8">
+                                <table>
+                                    <tr>
+                                        <td >Nama</td>
+                                        <td class="text-left" width="2%">:</td>
+                                        <td><b><?= $loginsession['nama'] ?></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td >Username</td>
+                                        <td class="text-left" width="2%">:</td>
+                                        <td><b><?= $loginsession['username'] ?></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td >Alamat</td>
+                                        <td class="text-left" width="2%">:</td>
+                                        <td><b><?= $loginsession['alamat'] ?></b></td>
+                                    </tr>
+                                    <tr>
+                                        <td >Nomor Telepon</td>
+                                        <td class="text-left" width="2%">:</td>
+                                        <td><b><?= $loginsession['no_telp'] ?></b></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="card-footer bg-whitesmoke">
-                Tani Agung
+                Support By Gilang Pratama
             </div>
         </div>
         </div>
     </section>
 </div>
-<?php $this->load->view('admin_design/footer', $modul); ?>
+
 <script type="text/javascript">
     
     function view_all(id) {
@@ -81,7 +126,7 @@ $this->load->view('admin_design/header', $modul);
                     var string = "";
                     for (i = 0; i < data.length; i++) {
                         string = string+'<div class="search-item">'+
-                            '<a id="search-item-'+i+'" href="<?= base_url() ?>'+data[i].url+'"><i class="'+data[i].icon+'"></i> &nbsp; '+data[i].nama+'</a>'+
+                            '<a id="search-item-'+i+'" href="#'+data[i].url+'"><i class="'+data[i].icon+'"></i> &nbsp; '+data[i].nama+'</a>'+
                         '</div>';
                     }
                     $("#item_pencarian").html(string);

@@ -6,13 +6,16 @@ class M_generator extends CI_Model {
 
 	function table_checker($data)
 	{
-		$schemas = $this->load->database('db2', TRUE);
+		// $schemas = $this->load->database('db2', TRUE);
 
-		$schemas->select();
-		$schemas->from('TABLES');
-		$schemas->where('TABLE_SCHEMA', $this->db->database);
-		$schemas->where('TABLE_NAME', spaceToUnderscore($data['menu_name']));
-		$result = $schemas->get()->row();
+		// $schemas->select();
+		// $schemas->from('TABLES');
+		// $schemas->where('TABLE_SCHEMA', $this->db->database);
+		// $schemas->where('TABLE_NAME', spaceToUnderscore($data['menu_name']));
+		// $result = $schemas->get()->row();
+
+		$query = "SHOW TABLES LIKE '".spaceToUnderscore($data['menu_name'])."'";
+		$result = $this->db->query($query)->row();
 		if (!empty($result)) {
 			echo json_encode("false");
 		}

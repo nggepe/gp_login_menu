@@ -14,13 +14,14 @@ class User_auth extends CI_Controller
 		{
 			
 			$url = "";
-			
 			for ($i = 1; $i<=2; $i++){
 				$url = $url."".$this->uri->segment($i)."/";
 			}
 			$url = strtolower(substr($url, 0,-1));
 			if (!in_array($url, $loginsession['access_control']['url'])) {
-				redirect('Error404/error_401');
+				if ($this->uri->segment(1)!='') {
+					redirect('Error404/error_401');
+				}
 			}
 		}
 
