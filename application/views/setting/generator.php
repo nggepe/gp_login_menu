@@ -15,21 +15,21 @@
             <div class="card-header">
                 <h4>Generator</h4>
             </div>
-            <div class="card-body row">
+            <div class="card-body">
                     <div class="col-md-12 text-right">
                         
                         <h4 style="float: right; cursor: pointer; color: blue;" onclick="Petunjuk()">Petunjuk <i class="fa fa-question-circle"></i></h4>
                     </div>
-                    <div class="form-group col-md-6">
-                        <form id="menus">
-                        <label for="menu_name">Nama menu</label>
-                        <input type="text" class="form-control" name="menu_name" id="menu_name" onkeyup="table_checker()">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="modul_id">Pilih Modul</label>
-                        <input type="text" class="form-control" name="modul_id" id="modul_id">
-                        </form>
-                    </div>
+                    <form id="menus" class="row" method="POST">
+                        <div class="form-group col-md-6">
+                            <label for="menu_name">Nama menu</label>
+                            <input type="text" class="form-control" name="menu_name" id="menu_name" onkeyup="table_checker()">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="modul_id">Pilih Modul</label>
+                            <input type="text" class="form-control" name="modul_id" id="modul_id">
+                        </div>
+                    </form>
                     <div class="col-md-12">
                         <button class="btn btn-md btn-primary" onclick="add_columns()"><i class="fa fa-plus"></i> Add Column</button>
                         <button class="btn btn-md btn-danger" id="btn-hapus" onclick="remove_columns()"><i class="fa fa-trash"></i> Delete</button>
@@ -390,7 +390,7 @@ function build()
                                     closeOnCancel: true 
                                 }, function(isConfirm){   
                                     if (isConfirm) {
-                                        window.location.hash("#"+data['url']);
+                                        window.location.replace("#"+data['url']);
                                     }
                                 });
                             },
