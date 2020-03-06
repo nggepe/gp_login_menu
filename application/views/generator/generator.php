@@ -348,7 +348,7 @@ function build()
         $("#btn-simpan").html('Sedang menyimpan....');
         $('#btn-simpan').attr('disabled',true);
         $.ajax({
-            url : "<?php echo base_url() ?>/setting/generator_/build",
+            url : "<?php echo base_url() ?>/generator/generator_/build",
             type: "POST",
             data: $("#save_table").serialize()+"&"+$('#menus').serialize(),
             dataType: "JSON",
@@ -371,7 +371,7 @@ function build()
                     if (isConfirm) {
 
                         $.ajax({
-                            url : "<?php echo base_url(); ?>setting/generator_/access_control_builder",
+                            url : "<?php echo base_url(); ?>generator/generator_/access_control_builder",
                             type: "POST",
                             dataType: "JSON",
                             data: inserted,
@@ -501,7 +501,7 @@ function table_checker()
 {
     textStatus = "true";
     $.ajax({
-        url : "<?php echo base_url() ?>/setting/generator_/table_checker",
+        url : "<?php echo base_url() ?>/generator/generator_/table_checker",
         type: "POST",
         data: $('#menus').serialize(),
         dataType: "JSON",
@@ -537,7 +537,7 @@ $('#modul_id').select2({
     placeholder : "Nama modul",
     allowClear : true,
     ajax: {
-        url: '<?php echo base_url(); ?>setting/generator_/select2_modul',
+        url: '<?php echo base_url(); ?>generator/generator_/select2_modul',
         dataType: 'json',
         type: 'post',
         quietMillis: 100,
@@ -552,7 +552,7 @@ $('#modul_id').select2({
     initSelection : function( el, cb ) {
         var id = $(el).val();
         $.ajax({
-            url: '<?php echo base_url(); ?>setting/generator_/select2_modul',
+            url: '<?php echo base_url(); ?>generator/generator_/select2_modul',
             data: { id: id },
             dataType: 'json',
             type: 'post'

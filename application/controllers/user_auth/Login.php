@@ -48,7 +48,7 @@ class Login extends CI_Controller {
 				);
 				$this->session->set_userdata('loginsession',$loginsession);
 
-				redirect(base_url().'#dashboard/Home');
+				redirect(base_url()."#".$access_control['url'][0]);
 			}
 
 			

@@ -263,6 +263,7 @@ $modul = $this->db->get("modul")->result();
 		{
 			$("#"+class_mod[0]+"-"+class_mod[1]).parent().addClass("active");
 		};
+		
         LoadAjaxContent(ajax_url);
 
     });
@@ -277,6 +278,7 @@ $modul = $this->db->get("modul")->result();
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				// swal(errorThrown, "Data berhasil disimpan!", "warning");
+
 				console.log(textStatus);
 			},
 			dataType: "html",
@@ -285,7 +287,7 @@ $modul = $this->db->get("modul")->result();
 	}
 	$(window).on('hashchange', function() {
 	  	var ajax_url = location.hash.replace(/^#/, '');
-
+	  	document.title = ajax_url;
        	LoadAjaxContent(ajax_url);
 
 	});

@@ -6,12 +6,12 @@ class Generator_ extends User_auth {
         parent::__construct();
         $this->load->helper('slug');
         $this->load->helper('generator');
-        $this->load->model('setting/M_generator', 'M_generator');
+        $this->load->model('generator/M_generator', 'M_generator');
     }
 
 	public function index()
 	{
-		$this->load->view('setting/generator');
+		$this->load->view('generator/generator');
 	}
 
 	public function build()
