@@ -95,7 +95,7 @@ $modul = $this->db->get("modul")->result();
 		</div>
 		<ul class="sidebar-menu">
 			<li class="menu-header">Menu</li>
-			<?php foreach ($modul as $key) { if (in_array($key->id, $loginsession['access_control']['modul'])) {?>
+			<?php foreach ($modul as $key) { 
 				if (in_array($key->id, $loginsession['access_control']['modul'])) {?>
 				<?php
 					if ($key->tipe=="dropdown") {
