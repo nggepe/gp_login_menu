@@ -26,7 +26,7 @@
           <div class="p-4 m-3">
             <img src="<?= base_url() ?>assets/admin/assets/img/stisla-fill.svg" alt="logo" width="80" class="shadow-light rounded-circle mb-5 mt-2">
             <h4 class="text-dark font-weight-normal">Welcome to <span class="font-weight-bold">Stisla</span></h4>
-            <p class="text-muted">Before you get started, you must login or register if you don't already have an account.</p>
+            <p class="text-muted"><?php echo $this->session->flashdata('flash_msg') ?></p>
             <form method="POST" action="<?= base_url() ?>user_auth/Login/submit" class="needs-validation" novalidate="">
               <div class="form-group">
                 <label for="username">username</label>

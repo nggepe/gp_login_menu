@@ -27,7 +27,7 @@ class Login extends CI_Controller {
 		else
 		{
 			if (count($data['access_control'])<1) {
-				redirect('user_auth/Login/no_access');
+				redirect(base_url());
 			}
 			else
 			{

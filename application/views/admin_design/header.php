@@ -96,6 +96,7 @@ $modul = $this->db->get("modul")->result();
 		<ul class="sidebar-menu">
 			<li class="menu-header">Menu</li>
 			<?php foreach ($modul as $key) { if (in_array($key->id, $loginsession['access_control']['modul'])) {?>
+				if (in_array($key->id, $loginsession['access_control']['modul'])) {?>
 				<?php
 					if ($key->tipe=="dropdown") {
 				?>
@@ -151,7 +152,7 @@ $modul = $this->db->get("modul")->result();
 <!-- foooter -->
 			<footer class="main-footer">
 	        	<div class="footer-left">
-	          		Copyright &copy; Tani Agung 2019 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
+	          		Copyright &copy; Reswara 2019 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
 	        	</div>
 	        	<div class="footer-right">
 	          		2.3.0
@@ -263,8 +264,9 @@ $modul = $this->db->get("modul")->result();
 		{
 			$("#"+class_mod[0]+"-"+class_mod[1]).parent().addClass("active");
 		};
-		
-        LoadAjaxContent(ajax_url);
+		if (ajax_url!=''){
+        	LoadAjaxContent(ajax_url);
+		}
 
     });
     function LoadAjaxContent(url){
