@@ -37,7 +37,7 @@ $modul['modul'] = $this->db->get("modul")->result();
                     
                     <div class="col-12 col-md-12 col-lg-12">
                         <?php $modul = $this->db->get('modul')->result(); ?>
-                        <?php foreach($modul as $key){?>
+                        <?php foreach($modul as $key){ if($key->nama!='Generator Ajax'){?>
                             <div class="form-group">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="mod-<?= $key->id ?>" onclick="modul_all('<?= $key->id ?>')">
@@ -55,7 +55,7 @@ $modul['modul'] = $this->db->get("modul")->result();
                                         <?php }?>
                                     </div>
                             </div>
-                        <?php }?>
+                        <?php }}?>
                     </div>
                 </div>
                 <div class="card-footer bg-whitesmoke">
