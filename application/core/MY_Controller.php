@@ -7,7 +7,9 @@ class User_auth extends CI_Controller
 
 		if (!$loginsession) 
 		{
-			redirect('user_auth/Login');
+			$this->output->set_status_header('401');
+			// redirect('user_auth/Login');
+			$this->load->view('user_auth/login_view');
 		}
 		
 		else

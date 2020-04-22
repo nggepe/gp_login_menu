@@ -1,5 +1,7 @@
-
 <?php $loginsession = $this->session->userdata('loginsession');
+if (!$loginsession) {
+	redirect("user_auth/login");
+}
 $modul = $this->db->get("modul")->result();
 ?>
 
@@ -279,7 +281,22 @@ $modul = $this->db->get("modul")->result();
 				$('#ajax-content').html(data);
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
-				// swal(errorThrown, "Data berhasil disimpan!", "warning");
+				if (errorThrown=="Unauthorized") {
+					swal({   
+				        title: "Demi keamanan!",   
+				        text: "Sesi habis, mohon login kembali!",   
+				        type: "warning",   
+				        showCancelButton: false,   
+				        confirmButtonColor: "#DD6B55",   
+				        confirmButtonText: "Okay!",   
+				        closeOnConfirm: true,
+				        closeOnCancel: true 
+				    }, function(isConfirm){   
+				        if (isConfirm) {
+				            window.location.replace("<?php echo base_url() ?>user_auth/login");
+				        }
+				    });
+				}
 
 				console.log(textStatus);
 			},
